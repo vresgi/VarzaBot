@@ -8,4 +8,4 @@ const client = new Discord.Client();
 
 loadBot(client);
 
-client.login(config.TOKEN);
+client.login(config.token);

@@ -1,10 +1,10 @@
 const { Collection } = require('discord.js');
-const { PREFIX } = require('./../../config');
+const { prefix } = require('./../../config');
 
 module.exports = (client, message) => {
-    if (!message.content.startsWith(PREFIX) || message.author.bot) return;
+    if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-    const args = message.content.slice(PREFIX.length).split(/ +/);
+    const args = message.content.slice(prefix.length).split(/ +/);
     const commandName = args.shift().toLowerCase();
     const user = message.mentions.users.first();
 
@@ -19,7 +19,7 @@ module.exports = (client, message) => {
     if (command.help.args && !args.length) {
         let noArgsReply = `Il faut des arguments pour cette commande, ${message.author}!`;
 
-        if (command.help.usage) noArgsReply += `\n Voici comment utiliser la commande: \`${PREFIX}${command.help.name} ${command.help.usage}\``;
+        if (command.help.usage) noArgsReply += `\n Voici comment utiliser la commande: \`${prefix}${command.help.name} ${command.help.usage}\``;
 
         return message.channel.send(noArgsReply);
     }
@@ -44,7 +44,7 @@ module.exports = (client, message) => {
 
         if (timeNow < cdExpirationTime) {
             const timeLeft = (cdExpirationTime - timeNow) / 1000;
-            return message.reply(`merci d'attendre ${timeLeft.toFixed(0)} seconde(s) avant de ré-utiliser cette commande.`);
+            return message.reply(`please wait ${timeLeft.toFixed(0)} second(s) before re-using that command`);
         }
     }
 
