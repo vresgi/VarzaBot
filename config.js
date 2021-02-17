@@ -1,2 +1,0 @@
-exports.TOKEN = "";
-exports.PREFIX = "";
