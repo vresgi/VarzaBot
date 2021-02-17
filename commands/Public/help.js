@@ -19,7 +19,7 @@ module.exports.run = (client, message, args) => {
       embed.addField(
         `${category}`,
         `${client.commands
-          .filter((cat) => cat.help.category === category.toLowerCase())
+          .filter((cat) => cat.help.category.toLowerCase === category.toLowerCase())
           .map((cmd) => cmd.help.name)
           .join(", ")}`
       );

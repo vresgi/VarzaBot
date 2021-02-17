@@ -1,4 +1,7 @@
-module.exports.run = async (client, message) => {
+const Discord = require(`discord.js`);
+const emo = require('../../src/emojis.js');
+
+module.exports.run = async (client, message, args) => {
     
 };
 

@@ -16,13 +16,13 @@ module.exports = (client, message) => {
     if (command.help.permissions && !message.member.hasPermission('ADMINISTRATOR')) { return message.reply('tu n\'as pas les permissions pour utiliser cette commande.'); }
 
     // Args
-    if (command.help.args && !args.length) {
+    /*if (command.help.args && !args.length) {
         let noArgsReply = `Il faut des arguments pour cette commande, ${message.author}!`;
 
         if (command.help.usage) noArgsReply += `\n Voici comment utiliser la commande: \`${prefix}${command.help.name} ${command.help.usage}\``;
 
         return message.channel.send(noArgsReply);
-    }
+    }*/
 
     // Mention
     if (command.help.isUserAdmin && !user) { return message.reply('Il faut mentionner un utilisateur.'); }
@@ -31,14 +31,16 @@ module.exports = (client, message) => {
     if (command.help.isUserAdmin && message.guild.member(user).hasPermission('ADMINISTRATOR')) { return message.reply('tu ne peux pas utiliser cette commande sur cet utilisateur.'); }
 
     // Roles
-    let userHasRole = false;
-    for (var i = command.help.roles.length - 1; i >= 0; i--) {
-        if (message.member.roles.cache.find(r => r.name === command.help.roles[i])) {
-            userHasRole = true;
-            break;
+    if (command.help.roles != '' && command.help.roles != undefined) {
+        let userHasRole = false;
+        for (var i = command.help.roles.length - 1; i >= 0; i--) {
+            if (message.member.roles.cache.find(r => r.name === command.help.roles[i])) {
+                userHasRole = true;
+                break;
+            }
         }
+        if (!userHasRole) return message.reply(`you don't have the permission to execute this command`);
     }
-    if (!userHasRole) return message.reply(`you don't have the permission to execute this command`);
 
     // Cooldowns
     if (!client.cooldowns.has(command.help.name)) {
