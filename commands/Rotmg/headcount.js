@@ -74,7 +74,7 @@ module.exports.run = async (client, message, args) => {
         const title = `Headcount for ${dungeonName} started by ${message.member.displayName}`;
 
         const myEmbed = new Discord.MessageEmbed()
-            .setColor(`#0C4EB2`)
+            .setColor(`#ffd700`)
             .setTitle(title)
             .setDescription(description)
             .setThumbnail(thumb)
@@ -101,10 +101,10 @@ module.exports.help = {
     name: "headcount",
     aliases: ['hc'],
     category: 'rotmg',
+    roles:['Guild Event Organizer', 'Leader', 'Officer'],
     description: "Headcount for dungeons",
     cooldown: 3,
     usage: '[dungeon]',
-    roles:[''],
     permissions: false,
     isUserAdmin: false,
 };

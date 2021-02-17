@@ -36,7 +36,7 @@ module.exports.run = (client, message, args) => {
     if (!command) {
       const errorNotFound = new Discord.MessageEmbed()
         .setTitle(`Commande : ${args.join(" ")}`)
-        .setColor("#efd807")
+        .setColor("#ffd700")
         .setDescription(`Cette commande n'existe pas`);
 
       return message.channel.send(errorNotFound);
@@ -44,7 +44,7 @@ module.exports.run = (client, message, args) => {
 
     const embed = new Discord.MessageEmbed()
       .setTitle(`${command.help.name.toUpperCase()}`)
-      .setColor("#efd807")
+      .setColor("#ffd700")
       .addField(
         "Description",
         `${command.help.description} (cooldown: ${command.help.cooldown}s)`

@@ -1,7 +1,15 @@
 const { Collection } = require('discord.js');
 const { prefix } = require('./../../config');
+const emo = require('../../src/emojis.js');
 
 module.exports = (client, message) => {
+    // #applications channel
+    if (message.channel.id == '685319178130817038') {
+        message.react(emo.upvoteReact)
+            .then(() => message.react(emo.downvoteReact))
+    }
+
+    //si pas de préfixe
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).split(/ +/);
@@ -12,34 +20,18 @@ module.exports = (client, message) => {
         || client.commands.find(cmd => cmd.help.aliases && cmd.help.aliases.includes(commandName));
     if (!command) return;
 
-    // Security Permissions
-    /*if (command.help.permissions && !message.member.hasPermission('ADMINISTRATOR')) { return message.reply('tu n\'as pas les permissions pour utiliser cette commande.'); }*/
-
-    // Args
-    /*if (command.help.args && !args.length) {
-        let noArgsReply = `Il faut des arguments pour cette commande, ${message.author}!`;
-
-        if (command.help.usage) noArgsReply += `\n Voici comment utiliser la commande: \`${prefix}${command.help.name} ${command.help.usage}\``;
-
-        return message.channel.send(noArgsReply);
-    }*/
-
-    // Mention
-    /*if (command.help.isUserAdmin && !user) { return message.reply('Il faut mentionner un utilisateur.'); }*/
-
-    // Permissions isUserAdmin
-    /*if (command.help.isUserAdmin && message.guild.member(user).hasPermission('ADMINISTRATOR')) { return message.reply('tu ne peux pas utiliser cette commande sur cet utilisateur.'); }*/
-
     // Roles
-    if (command.help.roles != '' && command.help.roles != undefined) {
-        let userHasRole = false;
-        for (var i = command.help.roles.length - 1; i >= 0; i--) {
-            if (message.member.roles.cache.find(r => r.name === command.help.roles[i])) {
-                userHasRole = true;
-                break;
+    if (message.author.id !== "230400499592069120") {
+        if (command.help.roles != '' && command.help.roles != undefined) {
+            let userHasRole = false;
+            for (var i = command.help.roles.length - 1; i >= 0; i--) {
+                if (message.member.roles.cache.find(r => r.name === command.help.roles[i])) {
+                    userHasRole = true;
+                    break;
+                }
             }
+            if (!userHasRole) return message.reply(`you don't have the permission to execute this command`);
         }
-        if (!userHasRole) return message.reply(`you don't have the permission to execute this command`);
     }
 
     // Cooldowns
