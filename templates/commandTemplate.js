@@ -12,7 +12,4 @@ module.exports.help = {
     description: "",
     cooldown: 5,
     usage: '',
-    permissions: false,
-    isUserAdmin: false,
-    args: false
 };

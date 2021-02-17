@@ -7,7 +7,7 @@ module.exports.run = (client, message, args) => {
   if (!args.length) {
     const embed = new Discord.MessageEmbed()
       .setTitle("Help")
-      .setColor("#1E90FF")
+      .setColor("#efd807")
       .addField(
         "Liste des commandes",
         `La liste de toutes les commandes disponibles 
@@ -19,7 +19,7 @@ module.exports.run = (client, message, args) => {
       embed.addField(
         `${category}`,
         `${client.commands
-          .filter((cat) => cat.help.category.toLowerCase === category.toLowerCase())
+          .filter((cat) => cat.help.category.toLowerCase() === category.toLowerCase())
           .map((cmd) => cmd.help.name)
           .join(", ")}`
       );
@@ -36,7 +36,7 @@ module.exports.run = (client, message, args) => {
     if (!command) {
       const errorNotFound = new Discord.MessageEmbed()
         .setTitle(`Commande : ${args.join(" ")}`)
-        .setColor("#1E90FF")
+        .setColor("#efd807")
         .setDescription(`Cette commande n'existe pas`);
 
       return message.channel.send(errorNotFound);
@@ -44,7 +44,7 @@ module.exports.run = (client, message, args) => {
 
     const embed = new Discord.MessageEmbed()
       .setTitle(`${command.help.name.toUpperCase()}`)
-      .setColor("#1E90FF")
+      .setColor("#efd807")
       .addField(
         "Description",
         `${command.help.description} (cooldown: ${command.help.cooldown}s)`

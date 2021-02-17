@@ -13,7 +13,7 @@ module.exports = (client, message) => {
     if (!command) return;
 
     // Security Permissions
-    if (command.help.permissions && !message.member.hasPermission('ADMINISTRATOR')) { return message.reply('tu n\'as pas les permissions pour utiliser cette commande.'); }
+    /*if (command.help.permissions && !message.member.hasPermission('ADMINISTRATOR')) { return message.reply('tu n\'as pas les permissions pour utiliser cette commande.'); }*/
 
     // Args
     /*if (command.help.args && !args.length) {
@@ -25,10 +25,10 @@ module.exports = (client, message) => {
     }*/
 
     // Mention
-    if (command.help.isUserAdmin && !user) { return message.reply('Il faut mentionner un utilisateur.'); }
+    /*if (command.help.isUserAdmin && !user) { return message.reply('Il faut mentionner un utilisateur.'); }*/
 
     // Permissions isUserAdmin
-    if (command.help.isUserAdmin && message.guild.member(user).hasPermission('ADMINISTRATOR')) { return message.reply('tu ne peux pas utiliser cette commande sur cet utilisateur.'); }
+    /*if (command.help.isUserAdmin && message.guild.member(user).hasPermission('ADMINISTRATOR')) { return message.reply('tu ne peux pas utiliser cette commande sur cet utilisateur.'); }*/
 
     // Roles
     if (command.help.roles != '' && command.help.roles != undefined) {
