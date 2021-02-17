@@ -11,7 +11,7 @@ module.exports.run = (client, message, args) => {
       .addField(
         "Liste des commandes",
         `La liste de toutes les commandes disponibles 
-            et leurs sous-catégories\nFaire \`${config.PREFIX}help <commande/alias>\` pour 
+            et leurs sous-catégories\nFaire \`${config.prefix}help <commande/alias>\` pour 
             plus d'informations à propos d'une commande.`
       );
 
@@ -52,8 +52,8 @@ module.exports.run = (client, message, args) => {
       .addField(
         "Utilisation",
         command.help.usage
-          ? `${config.PREFIX}${command.help.name} ${command.help.usage}`
-          : `${config.PREFIX}${command.help.name}`,
+          ? `${config.prefix}${command.help.name} ${command.help.usage}`
+          : `${config.prefix}${command.help.name}`,
         true
       );
 

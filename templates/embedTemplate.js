@@ -1,6 +1,6 @@
 const Discord = require(`discord.js`);
 
-const myEmbed = new Discord.RichEmbed()
+const myEmbed = new Discord.MessageEmbed()
     .setColor(`#0C4EB2`)// #C91800 pour rouge
     //.setAuthor(message.member.user.tag, message.author.displayAvatarURL)
     .setTitle(``)

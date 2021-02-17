@@ -30,6 +30,16 @@ module.exports = (client, message) => {
     // Permissions isUserAdmin
     if (command.help.isUserAdmin && message.guild.member(user).hasPermission('ADMINISTRATOR')) { return message.reply('tu ne peux pas utiliser cette commande sur cet utilisateur.'); }
 
+    // Roles
+    let userHasRole = false;
+    for (var i = command.help.roles.length - 1; i >= 0; i--) {
+        if (message.member.roles.cache.find(r => r.name === command.help.roles[i])) {
+            userHasRole = true;
+            break;
+        }
+    }
+    if (!userHasRole) return message.reply(`you don't have the permission to execute this command`);
+
     // Cooldowns
     if (!client.cooldowns.has(command.help.name)) {
         client.cooldowns.set(command.help.name, new Collection());
