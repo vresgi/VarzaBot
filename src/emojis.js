@@ -65,4 +65,6 @@ module.exports = {
     downvoteReact: downvoteReact = "downvote:763751262008639488",
     shrugReact: shrug = "shrug:763751784673312799",
 
+    loading: loading = "<a:loading:811801723181858848>",
+    wtfEyes: wtfEyes = "<a:wtfeyes:813641875851968542>",
 };

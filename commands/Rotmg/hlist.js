@@ -13,8 +13,8 @@ module.exports.run = async (client, message, args) => {
             const content = data.toString().toLowerCase().split('\r\n');
             //console.log(content);
             //console.log(name);
-            if (content.includes(name)) return message.channel.send(`${args[0]} is in the list`);
-                return message.channel.send(`${args[0]} is not in the list`);
+            if (content.includes(name)) return message.channel.send(`${args[0]} **is** in the list`);
+                return message.channel.send(`${args[0]} **is not** in the list`);
         });
     } else {
         return message.reply(`You can only give one name as argument`);

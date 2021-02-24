@@ -26,6 +26,7 @@ module.exports.run = async (client, message, args) => {
     ]
 
     const num = Math.floor(Math.random() * 24);
+    message.channel.bulkDelete(1, true);
     message.channel.send(dab[num]);
 };
 

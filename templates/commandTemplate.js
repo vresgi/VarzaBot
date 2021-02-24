@@ -9,9 +9,9 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: "",
     aliases: [''],
-    category: '',
-    roles: ['']
     description: "",
+    category: '',
+    roles: [''],
     cooldown: 5,
     usage: '',
 };

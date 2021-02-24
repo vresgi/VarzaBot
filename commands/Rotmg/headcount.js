@@ -29,7 +29,7 @@ module.exports.run = async (client, message, args) => {
             var dungeonName = `Void`;
             var thumb = 'https://i.imgur.com/kbzthE4.png';
             var description = `React with ${emo.voidPortal} to participate\nReact with ${emo.lhkey} if you have one and are willing to pop\nReact with your class and ability`;
-            var reacts = [emo.voidPortalReact, emo.lhkeyReact, emo.vialReact, emo.warriorReact, emo.paladinReact, emo.knightReact, emo.wizardReact, emo.mysticReact, emo.msealReact, emo.slowReact];
+            var reacts = [emo.voidPortalReact, emo.lhkeyReact, emo.vialReact];
         }
 
         else if (dungeon == "mbc" || dungeon == "m") {
@@ -87,7 +87,7 @@ module.exports.run = async (client, message, args) => {
         });
 
         chan.send('@here',myEmbed)
-            .then(m => {
+            .then(async function(m) {
                 for (var i =  0; i < reacts.length; i++) {
                     m.react(reacts[i])
                 }
